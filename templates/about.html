@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+    <h1>Hello World</h1>
+    <p>This is about me</p>
+
+    <p>
+        {{my_text}}, {{my_number}}
+    </p>
+
+    {{my_html|safe}}
+    {{my_html|striptags|slugify|capfirst}}
+    
+    <ul>
+        {% for my_sub_item in my_list %}
+            {% if my_sub_item == "TWD" %}
+                <li>{{ forloop.counter }} - {{my_sub_item}}</li>
+            {% elif my_sub_item == 123 %}
+                <li>{{ forloop.counter }} - {{123|add:2022}}</li>
+            {% else %}
+                <li>Location</li>
+            {% endif %}
+
+            <li>{{ forloop.counter }} - {{my_sub_item}}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+{% block content2 %}
+
+    <h1>Hello World 2</h1>
+    <p>This is all about me</p>
+
+{% endblock %}
