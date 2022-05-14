@@ -18,6 +18,11 @@ from django.urls import path, include
 
 from pages.views import home_view, contact_view, about_view
 
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/', include('playground.urls')),
@@ -25,8 +30,9 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('blog/', include('blog.urls')),
     path('courses/', include('courses.urls')),
+    path('polls/', include('polls.urls')),
 
     path("", home_view, name='home'),
     path("contact/", contact_view, name='contact'),
     path("about/", about_view, name='about'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
